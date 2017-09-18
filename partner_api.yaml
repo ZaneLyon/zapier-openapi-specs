@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: Zapier Partner API
 servers:
-  - url: 'http://zapier.com/partner/embed/'
+  - url: 'https://zapier.com/partner/embed'
 paths:
   /zaps:
     get:
