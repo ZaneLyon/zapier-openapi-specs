@@ -97,10 +97,22 @@ paths:
                     }]
         '400':
           description: The request is missing or was provided invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: The key you've provided is not valid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         5XX:
           description: A fatal error occurred while processing the request. Try again.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Zap:
@@ -163,3 +175,9 @@ components:
         id:
           type: integer
           format: int64
+    Error:
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
