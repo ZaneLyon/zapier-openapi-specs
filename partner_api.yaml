@@ -1,0 +1,165 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Zapier Partner API
+servers:
+  - url: 'http://zapier.com/partner/embed/'
+paths:
+  /zaps:
+    get:
+      summary: List all Zap Templates for my app
+      operationId: listZaps
+      parameters:
+        - name: key
+          in: query
+          description: This is your API key. Do not share.
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: >-
+            (defaults to 5, max of 100) Limit the number of Zap templates
+            returned.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: templates
+          in: query
+          description: A comma separated list of specific Zap templates (guided zaps).
+          required: false
+          schema:
+            type: string
+        - name: apps
+          in: query
+          description: >-
+            A comma separated list of Zapier Apps to match Zap templates
+            against. Note that your app will be one of the apps.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns zero or more Zap templates in a JSON array.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Zaps'
+              examples:
+                facebook:
+                  summary: Standard Example
+                  value: |
+                    [{
+                      "description": "<p>Facebook Lead Ads are an excellent way to grow your list of individuals interested in learning more about your product or service, but taking a next step with those people can sometimes take a back seat to your other tasks. With this Facebook Lead Ads-MailChimp integration, you'll no longer need to think about adding new leads to a marketing campaign—each new lead is automatically added to the list of your choice.</p>\n\n<h2>How this Facebook Lead Ads-MailChimp integration works</h2>\n\n<ol>\n<li>Someone fills out one of your Facebook Lead Ads</li>\n<li>Zapier adds that individual to a specified list in MailChimp</li>\n</ol>\n\n<h2>Apps involved</h2>\n\n<ul>\n<li>Facebook Lead Ads</li>\n<li>MailChimp</li>\n</ul>\n",
+                      "title": "Subscribe new Facebook Lead Ad leads to a MailChimp list",
+                      "url": "https://zapier.com/zapbook/zaps/10127/subscribe-new-facebook-lead-ads-mailchimp-list/",
+                      "type": "guided_zap",
+                      "description_raw": "Facebook Lead Ads are an excellent way to grow your list of individuals interested in learning more about your product or service, but taking a next step with those people can sometimes take a back seat to your other tasks. With this Facebook Lead Ads-MailChimp integration, you'll no longer need to think about adding new leads to a marketing campaign—each new lead is automatically added to the list of your choice.\r\n\r\n## How this Facebook Lead Ads-MailChimp integration works\r\n\r\n1. Someone fills out one of your Facebook Lead Ads\r\n2. Zapier adds that individual to a specified list in MailChimp\r\n\r\n## Apps involved\r\n\r\n- Facebook Lead Ads\r\n- MailChimp",
+                      "slug": "subscribe-new-facebook-lead-ads-mailchimp-list",
+                      "description_plain": "Facebook Lead Ads are an excellent way to grow your list of individuals interested in learning more about your product or service, but taking a next step with those people can sometimes take a back seat to your other tasks. With this Facebook Lead Ads-MailChimp integration, you'll no longer need to think about adding new leads to a marketing campaign—each new lead is automatically added to the list of your choice.\n\nHow this Facebook Lead Ads-MailChimp integration works\n\nSomeone fills out one of your Facebook Lead Ads\n\nZapier adds that individual to a specified list in MailChimp\n\nApps involved\n\nFacebook Lead Ads\n\nMailChimp",
+                      "steps": [
+                        {
+                          "description": "Facebook lead ads make signing up for business information easy for people and more valuable for businesses. The Facebook lead ad app is useful for marketers who want to automate actions on their leads.",
+                          "title": "Facebook Lead Ads",
+                          "url": "https://zapier.com/zapbook/facebook-lead-ads/",
+                          "image": "https://cdn.zapier.com/storage/services/fd9fef95169fd589d6cda992c0057cf8.png",
+                          "api": "FacebookLeadsAPI",
+                          "slug": "facebook-lead-ads",
+                          "hex_color": "3b5998",
+                          "images": {
+                            "url_128x128": "https://cdn.zapier.com/storage/services/fd9fef95169fd589d6cda992c0057cf8.128x128.png",
+                            "url_64x64": "https://cdn.zapier.com/storage/services/fd9fef95169fd589d6cda992c0057cf8.64x64.png",
+                            "url_16x16": "https://cdn.zapier.com/storage/services/fd9fef95169fd589d6cda992c0057cf8.16x16.png",
+                            "url_32x32": "https://cdn.zapier.com/storage/services/fd9fef95169fd589d6cda992c0057cf8.32x32.png"
+                          },
+                          "id": 3535
+                        },
+                        {
+                          "description": "MailChimp is an email marketing service provider, founded in 2001. It has 6 million users that collectively send over 10 billion emails through the service each month.",
+                          "title": "MailChimp",
+                          "url": "https://zapier.com/zapbook/mailchimp/",
+                          "image": "https://cdn.zapier.com/storage/services/5c727288d9c2f69a9eee136c5f5a0f72.png",
+                          "api": "MailChimpAPI",
+                          "slug": "mailchimp",
+                          "hex_color": "239AB9",
+                          "images": {
+                            "url_128x128": "https://cdn.zapier.com/storage/services/5c727288d9c2f69a9eee136c5f5a0f72.128x128.png",
+                            "url_64x64": "https://cdn.zapier.com/storage/services/5c727288d9c2f69a9eee136c5f5a0f72.64x64.png",
+                            "url_16x16": "https://cdn.zapier.com/storage/services/5c727288d9c2f69a9eee136c5f5a0f72.16x16.png",
+                            "url_32x32": "https://cdn.zapier.com/storage/services/5c727288d9c2f69a9eee136c5f5a0f72.32x32.png"
+                          },
+                          "id": 6
+                        }
+                      ],
+                      "create_url": "https://zapier.com/partner/embed/facebook-lead-ads/create/10127",
+                      "id": 10127
+                    }]
+        '400':
+          description: The request is missing or was provided invalid parameters.
+        '401':
+          description: The key you've provided is not valid.
+        5XX:
+          description: A fatal error occurred while processing the request. Try again.
+components:
+  schemas:
+    Zap:
+      properties:
+        description:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+          format: uri
+        type:
+          type: string
+        description_raw:
+          type: string
+        slug:
+          type: string
+        description_plain:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/Step'
+        create_url:
+          type: string
+          format: uri
+        id:
+          type: integer
+          format: int64
+    Zaps:
+      type: array
+      items:
+        $ref: '#/components/schemas/Zap'
+    Step:
+      properties:
+        description:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+        image:
+          type: string
+        api:
+          type: string
+        slug:
+          type: string
+        hex_color:
+          type: string
+        images:
+          properties:
+            url_128x128:
+              type: string
+            url_64x64:
+              type: string
+            url_16x16:
+              type: string
+            url_32x32:
+              type: string
+        id:
+          type: integer
+          format: int64
